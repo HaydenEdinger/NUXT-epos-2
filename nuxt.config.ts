@@ -34,7 +34,6 @@ export default defineNuxtConfig({
 
         // Dev Tools & Integrations
         '@nuxt/eslint',
-        '@nuxthq/studio',
         '@nuxtjs/mcp-toolkit',
         '@compodium/nuxt'
     ],
@@ -55,8 +54,10 @@ export default defineNuxtConfig({
         redirect: false,
     },
 
-    studio: {
-        enabled: true,
+    content: {
+        preview: {
+            api: 'https://api.nuxt.studio'
+        }
     },
 
     // Pre-configuration for fonts (good practice to define families early)
