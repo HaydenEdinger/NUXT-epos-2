@@ -10,7 +10,7 @@ const isError = ref(false)
 onMounted(async () => {
   // 1. Check if we have a "code" in the URL
   const code = route.query.code?.toString()
-  
+
   if (!code) {
     status.value = 'No login code found in URL.'
     isError.value = true
@@ -24,8 +24,9 @@ onMounted(async () => {
     return navigateTo('/')
   }
 
-  // 3. MANUAL EXCHANGE: This forces the handshake so we can see the error
-  const { data, error } = await client.auth.exchangeCodeForSession(code)
+  // 3. MANUAL EXCHANGE:
+  // We rename 'data' to '_data' so the linter ignores it until we need it later.
+  const { data: _data, error } = await client.auth.exchangeCodeForSession(code)
 
   if (error) {
     console.error('Exchange Error:', error)
@@ -49,7 +50,7 @@ watch(user, (u) => {
     <h2 class="text-2xl font-bold mb-4" :class="isError ? 'text-red-600' : 'text-gray-900'">
       {{ isError ? 'Error' : 'Logging In' }}
     </h2>
-    
+
     <p class="text-lg text-gray-700 mb-6">{{ status }}</p>
 
     <div v-if="!isError" class="animate-pulse text-sm text-gray-500">

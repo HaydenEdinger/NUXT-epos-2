@@ -43,7 +43,7 @@ const signIn = async () => {
           <UInput v-model="email" type="email" placeholder="you@example.com" />
         </UFormGroup>
         
-        <UButton @click="signIn" block color="black" :loading="loading">
+        <UButton block color="black" :loading="loading" @click="signIn">
           {{ loading ? 'Sending...' : 'Send Magic Link' }}
         </UButton>
       </div>
