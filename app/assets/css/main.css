@@ -1,0 +1,153 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+/* 1. Load Fonts */
+/* Urbanist (Body Font from Google) */
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap");
+
+/* Things Modern Serif (Display Font from Local) */
+@font-face {
+  font-family: "Things";
+  src: url("/fonts/Things-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Things";
+  src: url("/fonts/Things-Italic.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* 2. TweakCN Theme Variables (Light Mode) */
+:root {
+  --background: #f5f5f5;
+  --foreground: #171717;
+  --card: #fefefe;
+  --card-foreground: #171717;
+  --popover: #ffffff;
+  --popover-foreground: #171717;
+  --primary: #094e4e;
+  --primary-foreground: #ffffff;
+  --secondary: #c8df1a;
+  --secondary-foreground: #171717;
+  --muted: #e0e0e0;
+  --muted-foreground: #666666;
+  --accent: #578585;
+  --accent-foreground: #ffffff;
+  --destructive: #cb1728;
+  --destructive-foreground: #ffffff;
+  --border: #e8e8e8;
+  --input: #e0e0e0;
+  --ring: #306d71;
+
+  /* Charts */
+  --chart-1: #306d71;
+  --chart-2: #a0a0a0;
+  --chart-3: #f0f0f0;
+  --chart-4: #555555;
+  --chart-5: #333333;
+
+  /* Sidebar */
+  --sidebar: #f5f5f5;
+  --sidebar-foreground: #171717;
+  --sidebar-primary: #306d71;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #004a4a;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #e8e8e8;
+  --sidebar-ring: #306d71;
+
+  /* Settings */
+  --radius: 0.5rem;
+}
+
+/* Dark Mode Overrides */
+.dark {
+  --background: #181a1b;
+  --foreground: #fcfcfc;
+  --card: #1d2122;
+  --card-foreground: #fcfcfc;
+  --popover: #252a2b;
+  --popover-foreground: #fcfcfc;
+  --primary: #224856;
+  --primary-foreground: #fcfcfc;
+  --secondary: #4a565c;
+  --secondary-foreground: #fcfcfc;
+  --muted: #2e3234;
+  --muted-foreground: #b3b3b3;
+  --accent: #003939;
+  --accent-foreground: #fcfcfc;
+  --destructive: #a4424c;
+  --destructive-foreground: #fcfcfc;
+  --border: #292e31;
+  --input: #2e3234;
+  --ring: #224856;
+  --sidebar: #181a1b;
+  --sidebar-foreground: #fcfcfc;
+  --sidebar-primary: #224856;
+  --sidebar-primary-foreground: #fcfcfc;
+  --sidebar-accent: #003939;
+  --sidebar-accent-foreground: #fcfcfc;
+  --sidebar-border: #292e31;
+  --sidebar-ring: #224856;
+}
+
+/* 3. Configure Tailwind v4 Theme */
+@theme {
+  /* Fonts: 'Things' for Headings, 'Urbanist' for Body */
+  --font-display: "Things", serif;
+  --font-sans: "Urbanist", sans-serif;
+
+  /* Map CSS Variables to Tailwind Classes */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Radius Calculations */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* 4. Base HTML Styles */
+@layer base {
+  html {
+    font-family: var(--font-sans); /* Urbanist default */
+  }
+
+  /* Apply 'Things' font to all Headings */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+    font-weight: normal;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
